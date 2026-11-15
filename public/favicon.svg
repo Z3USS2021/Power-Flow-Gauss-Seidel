@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">PF G-S</title>
+  <rect width="64" height="64" rx="14" fill="#102a43"/>
+  <text x="32" y="29" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" text-anchor="middle" letter-spacing="-1">PF</text>
+  <path d="M15 36h34" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+  <text x="32" y="52" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">G-S</text>
+</svg>
