@@ -1,0 +1,8 @@
+{
+  "name": "Flujo de Potencia Gauss-Seidel",
+  "description": "Solucionador interactivo de flujo de potencia por el método de Gauss-Seidel con entrada matricial de barras y líneas, verificación paso a paso y resultados tabulados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

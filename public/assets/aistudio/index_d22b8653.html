@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>TransformerCore Professional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header><h1>TransformerCore Web</h1></header>
+
+    <nav class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'nominal')">Nominal</button>
+        <button class="tab-link" onclick="openTab(event, 'sc')">Ensayo SC</button>
+        <button class="tab-link" onclick="openTab(event, 'oc')">Ensayo OC</button>
+        <button class="tab-link" onclick="openTab(event, 'ref')">Referencia</button>
+        <button class="tab-link" onclick="openTab(event, 'load')">Carga</button>
+        <button class="tab-link" onclick="openTab(event, 'diagrams')">Diagramas</button>
+        <button class="tab-link" onclick="openTab(event, 'summary')">Resumen</button>
+    </nav>
+
+    <main>
+        <div id="nominal" class="tab-content active">
+            <h2>Paso 1: Datos Nominales</h2>
+            <div class="input-group">
+                <label>Potencia Nominal (S) [VA]</label><input type="number" id="S_nom" placeholder="Ej: 100000">
+                <label>Tensión Primaria (V1) [V]</label><input type="number" id="V1_nom" placeholder="Ej: 1000">
+                <label>Tensión Secundaria (V2) [V]</label><input type="number" id="V2_nom" placeholder="Ej: 200">
+                <label>Frecuencia (f) [Hz]</label><input type="number" id="f_nom" placeholder="Ej: 60">
+            </div>
+            <button class="btn-calc" onclick="ctrl.calculateNominal()">Calcular Paso 1</button>
+        </div>
+
+        <div id="sc" class="tab-content">
+            <h2>Paso 2: Ensayo Cortocircuito</h2>
+            <div class="input-group">
+                <label>Vsc [V]</label><input type="number" id="Vsc" placeholder="Ej: 100">
+                <label>Isc [A]</label><input type="number" id="Isc" placeholder="Ej: 100">
+                <label>Psc [W]</label><input type="number" id="Psc" placeholder="Ej: 2000">
+                <label>Lado del Ensayo</label>
+                <select id="SideSC"><option value="Alta Tensión">Alta Tensión</option><option value="Baja Tensión">Baja Tensión</option></select>
+            </div>
+            <button class="btn-calc" onclick="ctrl.processSC()">Calcular SC</button>
+        </div>
+
+        <div id="oc" class="tab-content">
+            <h2>Paso 3: Ensayo Circuito Abierto</h2>
+            <div class="input-group">
+                <label>Voc [V]</label><input type="number" id="Voc" placeholder="Ej: 200">
+                <label>Ioc [A]</label><input type="number" id="Ioc" placeholder="Ej: 20">
+                <label>Poc [W]</label><input type="number" id="Poc" placeholder="Ej: 1000">
+                <label>Lado del Ensayo</label>
+                <select id="SideOC"><option value="Baja Tensión">Baja Tensión</option><option value="Alta Tensión">Alta Tensión</option></select>
+            </div>
+            <button class="btn-calc" onclick="ctrl.processOC()">Calcular OC</button>
+        </div>
+
+        <div id="ref" class="tab-content">
+            <h2>Paso 4: Referencia</h2>
+            <div class="input-group">
+                <label>Referir hacia:</label>
+                <select id="RefSide"><option value="Lado Primario">Lado Primario</option><option value="Lado Secundario">Lado Secundario</option></select>
+            </div>
+            <button class="btn-calc" onclick="ctrl.setReference()">Fijar Referencia</button>
+        </div>
+
+        <div id="load" class="tab-content">
+            <h2>Condiciones de Carga</h2>
+            <div class="input-group">
+                <label>Carga (%)</label><input type="number" id="LoadPercent" placeholder="100">
+                <label>Factor de Potencia</label><input type="number" id="PF" placeholder="1.0">
+                <label>Tipo</label>
+                <select id="LoadType"><option value="Resistiva (Unitario)">Resistiva (Unitario)</option><option value="Inductiva (Atraso)">Inductiva (Atraso)</option><option value="Capacitiva (Adelanto)">Capacitiva (Adelanto)</option></select>
+            </div>
+            <button class="btn-calc" onclick="ctrl.solveAndPerformance()">Resolver Circuito</button>
+        </div>
+
+        <div id="diagrams" class="tab-content">
+            <h2>Diagramas Fasoriales</h2>
+            <div class="diagram-container">
+                <h3>Diagrama Completo (Referido)</h3>
+                <p class="legend">Escala: Corrientes y Caídas Z aumentadas x5</p>
+                <canvas id="canvasComplete" width="600" height="400"></canvas>
+            </div>
+        </div>
+
+        <div id="summary" class="tab-content">
+            <h2>Tabla Resumen Detallada</h2>
+            <div class="table-container"><table id="resumenTable"><thead><tr><th>Parámetro</th><th>Valor (Rectangular)</th><th>Valor (Polar)</th><th>Ecuación</th></tr></thead><tbody></tbody></table></div>
+        </div>
+
+        <div id="log-section"><h3>Procedimiento</h3><div id="procedure-log" class="log-box"></div></div>
+    </main>
+    <script src="complex.js"></script><script src="calculations.js"></script><script src="app.js"></script>
+</body>
+</html>

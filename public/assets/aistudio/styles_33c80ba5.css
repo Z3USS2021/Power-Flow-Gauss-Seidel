@@ -1,0 +1,20 @@
+:root { --primary: #007aff; --bg: #f2f2f7; --card: #ffffff; --text: #1c1c1e; --accent: #32d74b; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 40px; }
+header { background: var(--card); padding: 15px; text-align: center; border-bottom: 1px solid #d1d1d6; }
+.tabs { display: flex; overflow-x: auto; background: var(--card); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #d1d1d6; }
+.tab-link { padding: 15px 20px; border: none; background: none; font-weight: 600; color: #8e8e93; flex: 0 0 auto; min-width: 90px; font-size: 13px; }
+.tab-link.active { color: var(--primary); border-bottom: 3px solid var(--primary); }
+.tab-content { display: none; padding: 15px; }
+.tab-content.active { display: block; }
+.input-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 15px; }
+label { font-size: 12px; font-weight: 600; margin-top: 8px; }
+input, select { padding: 10px; border: 1px solid #d1d1d6; border-radius: 8px; font-size: 16px; background: var(--card); }
+.btn-calc { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 15px; margin-top: 5px; }
+.log-box { background: #1c1c1e; color: var(--accent); padding: 15px; border-radius: 10px; font-family: monospace; font-size: 12px; max-height: 250px; overflow-y: auto; margin: 15px; white-space: pre-wrap; }
+.table-container { overflow-x: auto; margin-top: 15px; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+table { width: 100%; border-collapse: collapse; min-width: 750px; }
+th, td { padding: 10px; border-bottom: 1px solid #f2f2f7; text-align: left; font-size: 11px; }
+th { background: #f9f9f9; color: #8e8e93; text-transform: uppercase; }
+.diagram-container { background: white; border-radius: 10px; padding: 10px; margin-top: 15px; }
+canvas { width: 100%; height: auto; border: 1px solid #eee; background: #fff; }
+.legend { font-size: 10px; color: #666; margin: 2px 0; }
